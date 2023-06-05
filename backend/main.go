@@ -26,7 +26,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Successful connection to the database")
+	fmt.Println("Successful connection to the database!")
 
 	app := fiber.New()
 
