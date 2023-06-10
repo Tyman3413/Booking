@@ -67,5 +67,30 @@ func main() {
 		return c.JSON(fiber.Map{"message": "User registered successfully", "userID": userID})
 	})
 
+	// Создаем обработчик POST-запроса для авторизации пользователя
+	app.Post("/login", func(c *fiber.Ctx) error {
+		// Получаем данные пользователя из запроса
+		loginData := new(User)
+		if err := c.BodyParser(loginData); err != nil {
+			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"message": "Invalid request"})
+		}
+
+		// Извлекаем данные пользователя и базы данных по email
+		var user User
+		err := db.QueryRow("SELECT id, password FROM users WHERE email = $1", loginData.Email).Scan(&user.ID, &user.Password)
+		if err != nil {
+			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"message": "Invalid credentials"}) // если пользователь с введенным email не найден
+		}
+
+		// Проверяем правильность введенного пароля
+		err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(loginData.Password))
+		if err != nil {
+			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"message": "Invalid credentials"}) // если был введен неверный пароль
+		}
+
+		// Авторизация прошла успешна
+		return c.JSON(fiber.Map{"message": "Login successful", "userID": user.ID})
+	})
+
 	log.Fatal(app.Listen(":4000"))
 }
