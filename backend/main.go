@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"golang.org/x/crypto/bcrypt"
 
 	_ "github.com/lib/pq"
 )
@@ -47,8 +48,14 @@ func main() {
 			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"message": "Invalid request"})
 		}
 
+		// Хэширование пароля пользователя
+		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+		if err != nil {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"message": "Failed to register user"})
+		}
+
 		// Добавляем нового пользователя в базу данных
-		result, err := db.Exec("INSERT INTO users (name, email, password) VALUES ($1, $2, $3)", user.Name, user.Email, user.Password)
+		result, err := db.Exec("INSERT INTO users (name, email, password) VALUES ($1, $2, $3)", user.Name, user.Email, hashedPassword)
 		if err != nil {
 			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"message": "Failed to register user"})
 		}
