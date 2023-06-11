@@ -12,14 +12,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-// Определяем структуру User для представления информации о пользователе
-// type User struct {
-// 	ID       int
-// 	Name     string
-// 	Email    string
-// 	Password string
-// }
-
 func main() {
 	database.Connect()
 
