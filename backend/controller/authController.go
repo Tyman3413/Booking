@@ -11,6 +11,7 @@ import (
 	"github.com/Tyman3413/Booking/database"
 	"github.com/Tyman3413/Booking/models"
 	"github.com/Tyman3413/Booking/util"
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -109,4 +110,9 @@ func Login(c *fiber.Ctx) error {
 		"message": "Logined successfully",
 		"user":    user,
 	})
+
+}
+
+type Claims struct {
+	jwt.StandardClaims
 }
