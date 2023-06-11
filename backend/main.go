@@ -92,5 +92,8 @@ func main() {
 		return c.JSON(fiber.Map{"message": "Login successful", "userID": user.ID})
 	})
 
+	// Сервировка статических файлов React
+	app.Static("/", "./static")
+
 	log.Fatal(app.Listen(":4000"))
 }

@@ -1,0 +1,76 @@
+.footer{
+    background-color: #4D5AFF;
+    border-top-left-radius: 70px;
+    border-top-right-radius: 70px;
+    height: 370px;
+    width: auto;
+    position: relative;
+}
+
+.row_footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_header{
+    padding-top: 50px;
+}
+
+.line{
+    width: 1480px;
+    border: 1px solid #828BFF;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.footer_number{
+    margin-bottom: 20px;
+}
+
+.footer_number, .footer_email{
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.link{
+    margin-bottom: 20px;
+}
+.link a{
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.link a:hover{
+    text-decoration: underline;
+
+}
+
+.brands{
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand{
+    margin-right: 30px;
+}
+
+.footer_bottom{
+    margin-bottom: 30px;
+}
+
+.footer_bottom_element_logo, .footer_bottom_element a{
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.up_btn{
+    position: absolute;
+    top: 40%;
+    right: 3%;
+    cursor: pointer;
+}
