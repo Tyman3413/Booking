@@ -13,6 +13,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// Обработчик для создания отеля и его сохранения в базе данных
 func CreateHotel(c *fiber.Ctx) error {
 	var hotelpost models.Hotel
 	if err := c.BodyParser(&hotelpost); err != nil {
@@ -31,6 +32,7 @@ func CreateHotel(c *fiber.Ctx) error {
 	})
 }
 
+// Обработчик для получения всех отелей
 func AllPosts(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 	limit := 5
@@ -52,6 +54,7 @@ func AllPosts(c *fiber.Ctx) error {
 	})
 }
 
+// Обработчик для получения подробной информации об отеле по его идентификатору
 func DetailPost(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
 
@@ -64,6 +67,7 @@ func DetailPost(c *fiber.Ctx) error {
 	})
 }
 
+// Обработчик для обновления информации об отеле
 func UpdatePost(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
 	hotel := models.Hotel{
@@ -81,6 +85,7 @@ func UpdatePost(c *fiber.Ctx) error {
 	})
 }
 
+// Обработчик для получения всех отелей, принадлежащих определенному пользователю
 func UniquePost(c *fiber.Ctx) error {
 	cookie := c.Cookies("jwt")
 	id, _ := util.Parsejwt(cookie)
@@ -92,6 +97,7 @@ func UniquePost(c *fiber.Ctx) error {
 	return c.JSON(hotel)
 }
 
+// Обработчик для удаления отеля
 func DeletePost(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
 	hotel := models.Hotel{
