@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"errors"
 	"fmt"
 	"math"
 	"strconv"
@@ -9,6 +10,7 @@ import (
 	"github.com/Tyman3413/Booking/models"
 	"github.com/Tyman3413/Booking/util"
 	"github.com/gofiber/fiber/v2"
+	"gorm.io/gorm"
 )
 
 func CreateHotel(c *fiber.Ctx) error {
@@ -88,4 +90,24 @@ func UniquePost(c *fiber.Ctx) error {
 	database.DB.Model(&hotel).Where("user_id=?", id).Preload("User").Find(&hotel)
 
 	return c.JSON(hotel)
+}
+
+func DeletePost(c *fiber.Ctx) error {
+	id, _ := strconv.Atoi(c.Params("id"))
+	hotel := models.Hotel{
+		Id: uint(id),
+	}
+
+	deleteQuery := database.DB.Delete(&hotel)
+
+	if errors.Is(deleteQuery.Error, gorm.ErrRecordNotFound) {
+		c.Status(400)
+		return c.JSON(fiber.Map{
+			"message": "Record not found",
+		})
+	}
+
+	return c.JSON(fiber.Map{
+		"message": "The post was successfully deleted",
+	})
 }
