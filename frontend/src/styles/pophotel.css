@@ -1,19 +1,19 @@
-.create_ad{
+.create_ad {
     background-image: url(/src/assets/img/createad/ad.png);
     height: 554px;
     width: auto;
     margin-top: 180px;
-    margin-bottom: 100px;   
+    margin-bottom: 100px;
 }
 
-.ad_labels{
+.ad_labels {
     width: 820px;
     height: auto;
     margin-left: 50px;
     padding-top: 50px;
 }
 
-.ad_title{
+.ad_title {
     font-size: 40px;
     font-weight: 600;
     margin-bottom: 10px;
@@ -21,20 +21,19 @@
     color: #fff;
 }
 
-.ad_subtitle{
+.ad_subtitle {
     color: #fff;
     letter-spacing: 5px;
     margin-bottom: 30px;
 }
 
-.create_btn{
+.create_btn {
     margin-top: 67px;
     margin-left: 50px;
-    
 }
 
-.create_btn a{
-    color: #4D5AFF;
+.create_btn a {
+    color: #4d5aff;
     font-weight: 600;
     font-size: 18px;
     text-decoration: none;
@@ -44,25 +43,25 @@
     background-color: #fff;
 }
 
-.slider_buttons{
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 200px;
-  gap: 30px;
-  background-color: #ffffff;
-  color: #ffffff;
+.slider_buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 250px;
+    gap: 30px;
+    background-color: #ffffff;
+    color: #ffffff;
 }
-.left-button{
-  background-color: #ffffff;
-  color: #ffffff;
-  padding: 0;
-  border: none;
-  background: none;
+.left-button {
+    background-color: #ffffff;
+    color: #ffffff;
+    padding: 0;
+    border: none;
+    background: none;
 }
-.right-button{
-  background-color: #ffffff;
-  color: #ffffff;
-  padding: 0;
-  border: none;
-  background: none;
+.right-button {
+    background-color: #ffffff;
+    color: #ffffff;
+    padding: 0;
+    border: none;
+    background: none;
 }
