@@ -1,5 +1,6 @@
 package models
 
+// Структура Hotel представляет модель отеля с различными связями с другими таблицами в базе данных
 type Hotel struct {
 	Id          uint   `json:"id"`
 	Title       string `json:"title"`
@@ -10,11 +11,11 @@ type Hotel struct {
 	Reviews     string `json:"reviews"`
 	Image       string `json:"image"`
 	RoomID      string `json:"roomid"`
-	Room        Room   `json:"room";gorm:"foreignkey:RoomID"` // Связка с таблицей Номеров отелей
+	Room        Room   `json:"room";gorm:"foreignkey:RoomID"`
 	CityID      string `json:"cityid"`
-	City        City   `json:"city";gorm:"foreignkey:CityID"` //
+	City        City   `json:"city";gorm:"foreignkey:CityID"`
 
-	// Скип
+	// ! Для процесса добавления пользователем нового объекта
 	UserID string `json:"userid"`
 	User   User   `json:"user";gorm:"foreignkey:UserID"`
 

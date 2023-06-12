@@ -1,5 +1,6 @@
 package models
 
+// Структура Room представляет модель номера отеля
 type Room struct {
 	ID          uint   `json:"id"`
 	Type        string `json:"type"`

@@ -1,5 +1,6 @@
 package models
 
+// Структура HotelUsability представляет модель удобств отеля
 type HotelUsability struct {
 	Id      uint   `json:"id"`
 	Name    string `json:"name"`
